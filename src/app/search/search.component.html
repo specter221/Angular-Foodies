@@ -1,0 +1,66 @@
+<div  id="searchtab" >
+  <div class="row" >
+    <div id="searchbar">
+      <div class="form-inline">
+        <select class="form-control" #city aria-placeholder="City" aria-dropeffect="fade">
+            <option value=4>Bangalore</option>
+            <option value=3>Mumbai</option>
+            <option value=2>Kolkata</option>
+            <option value=1>Delhi</option>
+        </select> <!-- end of select form control -->                      
+            <button (click)="performSearch_cuisine(city)" class="btn btn-primary">
+            fetch cuisine
+            </button><!-- end of button -->             
+        
+      <div *ngIf="cuisines">
+        <select class="form-control" #cuisine_id aria-placeholder="Cuisines">
+            <option *ngFor="let cuisi of cuisines.cuisines" [value]="cuisi.cuisine.cuisine_id">
+            {{cuisi.cuisine.cuisine_name}}
+            </option><!-- end of option ngfor-->
+        </select><!-- end of select form control -->
+            <button (click)="performSearch(cuisine_id,city)" class="btn btn-primary"> 
+            Search 
+           </button><!-- end of button -->
+            <br><br>
+      </div><!-- end of div ngIf-->
+      
+       <div class="row search-content">
+         <ul *ngFor="let rest of restaurants"> 
+         <li>
+          <div class="container"> 
+            <div class="row well">
+            
+                <div class="col-sm-3">
+                <a href="#">
+                <img class="img-responsive lolu" src="{{rest.restaurant.thumb}}" alt="Not Visible">
+                </a>
+                </div><!-- end of div colsm-3-->
+                 
+                <div class="col-sm-9">
+                <h2>{{rest.restaurant.name}} </h2>
+                <p>
+                {{rest.restaurant.location.locality}}<br>
+                Cost for two: {{rest.restaurant.average_cost_for_two}} <br>
+                <button class="btn btn-success">
+                 Save 
+                </button><!-- end of button -->
+                </p><!-- end of paragraph -->
+                </div><!-- end of div colsm-9-->
+
+            </div><!-- end of div row well-->
+          </div><!-- end of div container -->
+         </li><!-- end of li tag -->
+         </ul><!-- end of ul ngfor -->
+        </div><!-- end of div row search content -->
+       
+     </div><!-- end of div form inline-->
+  </div><!-- end of div searchbar-->
+</div><!-- end of div row -->
+</div><!-- end of div searchtab -->
+
+
+
+
+
+
+ 
