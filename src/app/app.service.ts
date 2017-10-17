@@ -7,14 +7,12 @@ export class SearchService {
    restaurants = [];
    cuisine:any;
    getResturant(cuisine:HTMLInputElement, city:HTMLInputElement){
-       
-       let headers = new Headers({ 'user-key' : '0c8a4b66d6232c9480ccb9a9f240c165' });//api key
+       let headers = new Headers({ 'user-key' : '0c8a4b66d6232c9480ccb9a9f240c165' }); // api key
        let requestOpt = new RequestOptions({ headers: headers });
-     
        var apiLink = 'https://developers.zomato.com/api/v2.1/search?entity_id='+(city.value)
        +'&entity_type=city&cuisines=' + (cuisine.value); 
-       this.http.get(apiLink, requestOpt)// observable is used
-       .subscribe((res: Response) => {
+       this.http.get(apiLink, requestOpt) // observable is used
+       .subscribe((res: Response) =>{
          this.restaurants = res.json().restaurants;
        });
  }
